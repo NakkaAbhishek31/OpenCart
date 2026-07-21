@@ -1,39 +1,37 @@
+import { Page, expect, Locator } from '@playwright/test';
 
-import { Page,expect,Locator } from "@playwright/test";
+export class HomePage {
+    private readonly page: Page;
+    
+    // Locators
+    private readonly lnkMyAccount: Locator;
+    private readonly lnkRegister: Locator;
+    private readonly linkLogin: Locator;
+    private readonly txtSearchbox: Locator;
+    private readonly btnSearch: Locator;
 
-
-export  class HomePage{
-//locators
- private readonly page:Page;
-
-private readonly lnkMyAccount:Locator;
-private readonly lnkRegister:Locator;
-private readonly linkLogin:Locator;
-private readonly txtSearchbox:Locator
-private readonly btnSearch:Locator
-//constructor
-
-constructor (page:Page){
-        this.page=page
+    constructor(page: Page) {
+        this.page = page;
+        
+        // Initialize locators
         this.lnkMyAccount = page.locator('span:has-text("My Account")');
         this.lnkRegister = page.locator('a:has-text("Register")');
         this.linkLogin = page.locator('a:has-text("Login")');
         this.txtSearchbox = page.locator('input[placeholder="Search"]');
         this.btnSearch = page.locator('#search button[type="button"]');
-
-}
-//action methods
-async isHomePageExits()
-{
-    let title:string=await this.page.title();
-    if(title)
-    {
-        return true
     }
-    return false;
-}
 
-// Click "My Account" link
+    // Check if HomePage exists
+    async isHomePageExists(){
+        let title:string = await this.page.title();
+        if(title)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // Click "My Account" link
     async clickMyAccount(){
         try {
             await this.lnkMyAccount.click();
@@ -43,7 +41,7 @@ async isHomePageExits()
         }
     }
 
- // Click "Register" link
+    // Click "Register" link
     async clickRegister(){
         try {
             await this.lnkRegister.click();
@@ -82,7 +80,4 @@ async isHomePageExits()
             throw error;
         }
     }
-    
-
 }
-
