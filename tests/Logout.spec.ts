@@ -60,7 +60,7 @@ test('User logout test @master @regression', async () => {
 
   // Step 6: Verify "Continue" button is visible before clicking
   expect(await logoutPage.isContinueButtonVisible()).toBe(true);
-
+//
   // Step 7: Click Continue and verify redirection to HomePage
   homePage = await logoutPage.clickContinue();
   expect(await homePage.isHomePageExists()).toBe(true);
