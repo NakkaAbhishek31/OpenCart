@@ -63,5 +63,5 @@ test('User logout test @master @regression', async () => {
 
   // Step 7: Click Continue and verify redirection to HomePage
   homePage = await logoutPage.clickContinue();
-  expect(await homePage.isHomePageExits()).toBe(true);
+  expect(await homePage.isHomePageExists()).toBe(true);
 });
